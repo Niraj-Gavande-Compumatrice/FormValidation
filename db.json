@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Niraj",
+      "lastName": "Gavande",
+      "email": "niraj@gmail.com",
+      "mobile": 6876578788,
+      "gender": "male"
+    },
+    {
+      "firstName": "ganesh",
+      "lastName": "K",
+      "email": "ganesh@gmail.com",
+      "mobile": 5255854578,
+      "gender": "male",
+      "id": 2
+    }
+  ]
+}

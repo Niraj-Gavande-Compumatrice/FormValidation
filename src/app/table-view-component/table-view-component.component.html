@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row mt-5">
+      <h3>User Information</h3>
+    <table class="table table-striped">
+      <tr>
+        <th>ID</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>MobileNo</th>
+      </tr>
+      <tr *ngFor="let user of users">
+        <td>{{user.id}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.gender}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.mobile}}</td>
+      </tr>
+      <button class="btn btn-primary mt-5" (click)="NewUser()"> ADD USERS</button>
+    </table>
+  </div>
+</div>

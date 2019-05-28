@@ -1,0 +1,93 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Form</h3>
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+            <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+              <div *ngIf="firstName.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
+            <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+              <div *ngIf="lastName.errors.required">Last Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
+            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.email">Email must be a valid email address</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mobno">MobileNo:</label>
+            <input type="number" class="form-control" minlength="10" maxlength="10" name="mobno"
+              [(ngModel)]="model.mobile" #mobno="ngModel" [ngClass]="{ 'is-invalid': f.submitted && mobno.invalid }"
+              required>
+            <div *ngIf="f.submitted && mobno.invalid" class="invalid-feedback">
+              <div *ngIf="mobno.errors.required">Mobile is required</div>
+              <div *ngIf="mobno.errors.minlength || mobno.errors.maxlength">phone number should be 10 digits</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="d-block">Gender:</label>
+              <label class="radio-inline">
+                <input type="radio" [(ngModel)]="model.gender" name="radiomale" required value="male"
+                  #genderControl="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && genderControl.invalid }">&nbsp;Male&nbsp;
+              </label>
+              <label class="radio-inline">
+                <input type="radio" [(ngModel)]="model.gender" name="radiofemale" required value="female"
+                  #genderControl="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && genderControl.invalid }">&nbsp;Female
+              </label>
+            </div>
+          </div>
+          <div class="error" *ngIf="genderControl.invalid && f.submitted">
+            Gender is required
+          </div>
+          <div class="form-group mt-3">
+            <label for="password">Hobbies:</label>
+            <div class="checkbox">
+              <label><input type="checkbox" name="tc1" #tc1="ngModel" value="dsf" [(ngModel)]="user1"
+                  [ngModelOptions]="{standalone: true}" required>Rading</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" name="tc2" #tc2="ngModel" value="sgd" [(ngModel)]="user2"
+                  [ngModelOptions]="{standalone: true}" required>writing</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" name="tc3" #tc3="ngModel" value="sgs" [(ngModel)]="user3"
+                  [ngModelOptions]="{standalone: true}" required>swimming</label>
+            </div>
+            <div class="error" *ngIf="(tc1.invalid && tc2.invalid && tc3.invalid) && f.submitted">
+              Please check atleast one
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="btn-bs-file btn btn-secondary mt-1">
+              <span>
+                <i class="fas fa-image"></i> Upload profile picture</span>
+              <input type="file" accept="image/*" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
+            </label>
+          </div>
+          <div class="form-group mt-5">
+            <button class="btn btn-primary mr-3">Register</button>
+            <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
